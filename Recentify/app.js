@@ -4,6 +4,7 @@
 // Github Profile: https://github.com/SkipOs
 // ======================================================================
 
+// Yeah, I KNOW that hardcoding a Client ID is an invite for problems but let's see how long you guys can be nice
 const CLIENT_ID = "4e38df9c3104484388e1420cb02fad85"; //PLEASE I beg you. don't place this anywhere everywhere, I don't want to keep resetting it. If you're going to put your own instance, make a new one.
 
 const REDIRECT_URI = window.location.origin + window.location.pathname;

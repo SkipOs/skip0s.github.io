@@ -10,6 +10,8 @@ it's 2009 and servers are expensive and I'm broke and Your Spotify data
 never leaves your machine except to go chat with Spotify's own API, which 
 honestly already knows everything about you anyway.
 
+https://skipos.github.io/skip0sAppRepo/Recentify/
+
 ## 1. Get a free Spotify Client ID
 
 If you want to host your owns, you need to know: 

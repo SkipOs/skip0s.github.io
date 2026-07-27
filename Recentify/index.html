@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recentify — Banner Maker</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="app">
+    <span class="app-mark">∅</span>
+    <span class="app-name">Recentify was made by <a href=https://github.com/SkipOs class="step">Skip0s</a></span>
+  </div>
+  <div id="connectionState" class="conn-state conn-off">not connected</div>
+</header>
+
+<main class="layout">
+
+  <section class="rail">
+
+    <!-- STEP 1: Connect -->
+    <div class="panel" id="panel-connect">
+      <h2><span class="step">01</span> Connect Spotify</h2>
+      <p class="hint">Log in with your Spotify account to pull your name, photo, and top artists. Nothing is stored on any server — it stays in your browser. Really. Code dive-it if you want.</p>
+      <button class="btn primary" id="connectBtn">Connect to Spotify</button>
+      <p class="micro" id="authError"></p>
+    </div>
+
+    <div class="panel hidden" id="panel-customize">
+      <h2><span class="step">02</span> Customize</h2>
+
+      <label class="field">
+        <span>Show</span>
+        <select id="contentTypeSelect">
+          <option value="artists" selected>Top Artists</option>
+          <option value="tracks">Top Tracks</option>
+          <option value="albums">Top Albums</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Title text</span>
+        <input type="text" id="titleInput" placeholder="e.g. your display name" />
+      </label>
+
+      <label class="field">
+        <span>Time range</span>
+        <select id="timeRangeSelect">
+          <option value="short_term">Last 4 weeks</option>
+          <option value="medium_term" selected>Last 6 months</option>
+          <option value="long_term">All time</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span># of items <span class="range-value" id="countValue">8</span></span>
+        <input type="range" id="countSlider" min="2" max="10" step="2" value="8" />
+      </label>
+
+      <div class="field">
+        <span>Banner</span>
+        <div class="banner-row"> <!-- generic banenrs bc why nut-->
+          <button class="swatch-btn" data-banner="preset:sunset" style="background:linear-gradient(135deg,#ff6a6a,#ffb347)"></button>
+          <button class="swatch-btn" data-banner="preset:violet" style="background:linear-gradient(135deg,#5b247a,#1bcedf)"></button>
+          <button class="swatch-btn" data-banner="preset:mono" style="background:linear-gradient(135deg,#3a3a3a,#0d0d0d)"></button>
+          <button class="swatch-btn" data-banner="preset:matcha" style="background:linear-gradient(135deg,#2d4a3e,#a3c9a8)"></button>
+          <label class="swatch-btn upload-btn" title="upload your own image">
+            ⤒
+            <input type="file" id="bannerUpload" accept="image/*" hidden />
+          </label>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>Banner height <span class="range-value" id="bannerHeightValue">260px</span></span>
+        <input type="range" id="bannerHeightSlider" min="140" max="420" step="10" value="260" />
+      </label>
+
+      <label class="field">
+        <span>Banner image focus <span class="range-value" id="bannerFocusValue">50%</span></span>
+        <input type="range" id="bannerFocusSlider" min="0" max="100" step="5" value="50" />
+      </label>
+
+      <label class="field">
+        <span>Title font</span>
+        <select id="titleFontSelect"></select>
+      </label>
+
+      <label class="field">
+        <span>Title size <span class="range-value" id="titleSizeValue">56px</span></span>
+        <input type="range" id="titleSizeSlider" min="28" max="88" step="2" value="56" />
+      </label>
+
+      <label class="field">
+        <span>Label font</span>
+        <select id="labelFontSelect"></select>
+      </label>
+
+      <label class="field">
+        <span>Label size <span class="range-value" id="labelSizeValue">20px</span></span>
+        <input type="range" id="labelSizeSlider" min="12" max="32" step="1" value="20" />
+      </label>
+
+      <label class="field checkbox-field">
+        <input type="checkbox" id="shadowToggle" checked />
+        <span>Depth shadows</span>
+      </label>
+
+      <button class="btn primary" id="downloadBtn">Download PNG</button>
+    </div>
+
+  </section>
+
+  <section class="preview-pane">
+    <div id="previewEmpty" class="preview-empty">
+      <p>Connect your Spotify account to preview your card.</p>
+    </div>
+    <canvas id="cardCanvas" width="900" height="900" class="hidden"></canvas>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

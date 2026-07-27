@@ -1,0 +1,361 @@
+/* ==========================================================================
+ YEAH I made one exlusively for the app. Yeah I like NieR, so what?
+========================================================================== */
+:root {
+  --yh-bg: #1e1d1a;           
+  --yh-surface: #272622;       
+  --yh-surface-2: #31302b;     
+  --yh-line: #4e4b42;          
+  --yh-line-dim: #3a3832;      
+  
+  --yh-text: #c4c1b0;          
+  --yh-text-bright: #dcd9c7;   
+  --yh-muted: #79766a;         
+  
+  --yh-accent: #b35924;        
+  --yh-accent-dim: #6e3e23;    
+  --yh-success: #879960;       
+  --yh-danger: #a94444;        
+  
+  --radius-sharp: 0px;         
+  --radius-sm: 2px;
+  
+  --font-mono: "Courier New", Courier, monospace;
+  --font-display: "Arial Black", sans-serif;
+  --font-body: "Arial", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--yh-bg);
+  color: var(--yh-text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.04em;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 73px);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 860px) {
+  .layout { 
+    grid-template-columns: 1fr; 
+  }
+}
+
+.rail {
+  border-right: 1px double var(--yh-line);
+  padding: 28px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 24px;
+  overflow-y: auto;
+  background: linear-gradient(90deg, rgba(39,38,34,0.3) 0%, transparent 100%);
+}
+
+.preview-pane {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  padding: 40px;
+  background-image: radial-gradient(var(--yh-line-dim) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.topbar {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 2px solid var(--yh-line);
+  background-color: var(--yh-surface);
+}
+
+.app {
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  font-family: var(--font-mono); 
+  font-weight: bold;
+  font-size: 1.1rem; 
+  text-transform: uppercase;
+  color: var(--yh-text-bright);
+}
+
+.app-mark {
+  color: var(--yh-accent); 
+  font-size: 1.3rem;
+}
+
+.conn-state {
+  font-family: var(--font-mono); 
+  font-size: 0.72rem; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em;
+  padding: 4px 12px; 
+  border: 1px solid var(--yh-line); 
+  color: var(--yh-muted);
+  background-color: var(--yh-bg);
+}
+
+.conn-state.conn-on { 
+  color: var(--yh-success); 
+  border-color: var(--yh-success);
+  box-shadow: 0 0 4px rgba(135, 153, 96, 0.2);
+}
+
+.panel {
+  background: var(--yh-surface);
+  border: 1px solid var(--yh-line);
+  border-left: 4px solid var(--yh-line); 
+  padding: 20px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px;
+  position: relative;
+}
+
+.panel h2 {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--yh-text-bright);
+  margin: 0;
+  display: flex; 
+  align-items: center; 
+  gap: 10px;
+  border-bottom: 1px solid var(--yh-line-dim);
+  padding-bottom: 8px;
+}
+
+.step {
+  font-family: var(--font-mono); 
+  font-size: 0.65rem; 
+  color: var(--yh-accent);
+  border: 1px solid var(--yh-accent); 
+  padding: 1px 6px;
+  background-color: rgba(179, 89, 36, 0.05);
+}
+
+.hint { 
+  color: var(--yh-muted); 
+  font-size: 0.8rem; 
+  line-height: 1.6; 
+  margin: 0; 
+}
+
+.field { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  font-size: 0.85rem; 
+}
+
+.field > span { 
+  color: var(--yh-muted); 
+  font-size: 0.75rem; 
+  font-family: var(--font-mono);
+  text-transform: uppercase; 
+  letter-spacing: 0.06em; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+}
+
+input[type=text], select {
+  background: var(--yh-surface-2); 
+  border: 1px solid var(--yh-line); 
+  color: var(--yh-text);
+  border-radius: var(--radius-sharp); 
+  padding: 10px 12px; 
+  font-family: var(--font-mono); 
+  font-size: 0.85rem;
+}
+
+input[type=text]:focus, select:focus { 
+  outline: 1px solid var(--yh-accent); 
+  border-color: var(--yh-accent);
+}
+
+input[type=range] { 
+  accent-color: var(--yh-accent); 
+}
+
+.range-value {
+  font-family: var(--font-mono); 
+  font-size: 0.68rem; 
+  color: var(--yh-accent); 
+  background: var(--yh-surface-2); 
+  border: 1px solid var(--yh-line-dim);
+  padding: 1px 6px;
+}
+
+.checkbox-field { 
+  flex-direction: row; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.checkbox-field span { 
+  text-transform: none; 
+  font-size: 0.85rem; 
+  color: var(--yh-text); 
+}
+
+.checkbox-field input[type=checkbox] { 
+  accent-color: var(--yh-accent); 
+  width: 14px; 
+  height: 14px; 
+}
+
+.btn {
+  font-family: var(--font-mono); 
+  font-weight: bold; 
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-radius: var(--radius-sharp); 
+  padding: 12px 16px; 
+  border: 1px solid var(--yh-line);
+  background: var(--yh-surface-2);
+  color: var(--yh-text);
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.btn:hover { 
+  background: var(--yh-line);
+  color: var(--yh-text-bright);
+}
+
+.btn.primary { 
+  background: var(--yh-accent); 
+  color: var(--yh-text-bright);
+  border-color: var(--yh-accent);
+}
+
+.btn.primary:hover {
+  background: var(--yh-accent-dim);
+}
+
+.btn.primary:disabled { 
+  background: var(--yh-surface-2); 
+  color: var(--yh-muted); 
+  border-color: var(--yh-line-dim);
+  cursor: not-allowed; 
+}
+
+.banner-row { 
+  display: flex; 
+  gap: 8px; 
+  flex-wrap: wrap; 
+}
+
+.swatch-btn {
+  width: 42px; 
+  height: 42px; 
+  border-radius: var(--radius-sharp); 
+  border: 1px solid var(--yh-line);
+  cursor: pointer; 
+  padding: 0;
+}
+
+.swatch-btn.selected { 
+  outline: 2px solid var(--yh-accent); 
+  outline-offset: 1px; 
+}
+
+.upload-btn {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: var(--yh-surface-2); 
+  color: var(--yh-muted); 
+  font-size: 1rem;
+}
+
+.howto { 
+  font-size: 0.8rem; 
+  color: var(--yh-muted); 
+}
+
+.howto summary { 
+  cursor: pointer; 
+  color: var(--yh-text); 
+  font-family: var(--font-mono);
+  margin-bottom: 6px; 
+}
+
+.howto ol { 
+  padding-left: 18px; 
+  line-height: 1.7; 
+}
+
+.howto code {
+  background: var(--yh-surface-2); 
+  border: 1px solid var(--yh-line-dim); 
+  padding: 2px 6px; 
+  font-family: var(--font-mono); 
+  font-size: 0.75rem; 
+  color: var(--yh-text-bright);
+  word-break: break-all;
+}
+
+.copy-btn {
+  font-family: var(--font-mono); 
+  font-size: 0.65rem; 
+  background: none; 
+  border: 1px solid var(--yh-line);
+  color: var(--yh-muted); 
+  padding: 1px 6px; 
+  cursor: pointer; 
+  margin-left: 4px;
+}
+
+.copy-btn:hover { 
+  color: var(--yh-text-bright); 
+  border-color: var(--yh-accent); 
+}
+
+.micro { 
+  font-family: var(--font-mono);
+  font-size: 0.75rem; 
+  color: var(--yh-danger); 
+  min-height: 1em; 
+  margin: 0; 
+}
+
+.preview-empty { 
+  color: var(--yh-muted); 
+  font-family: var(--font-mono); 
+  font-size: 1rem; 
+  text-align: center; 
+  max-width: 280px; 
+  text-transform: uppercase;
+}
+
+#cardCanvas {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: var(--radius-sharp);
+  border: 1px solid var(--yh-line);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+
+/* Global Utilities */
+.hidden { 
+  display: none !important; 
+}

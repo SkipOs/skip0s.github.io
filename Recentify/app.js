@@ -1,6 +1,6 @@
 // ======================================================================
 // Hi! Skip0s here. Code dive at will, we don't have secrets around here.
-// Replicating is free, but kee´pm crediting me. 
+// Replicating is free, but credit me. 
 // Github Profile: https://github.com/SkipOs
 // ======================================================================
 
